@@ -5,6 +5,10 @@ For code pertaining to our ENME472 Capstone Project
 
 **./Website** contains any files and programs pertaining to the website.
 
+## Running the website
+From a bash shell, navigate into the **./Website** directory and run this:
+
+`./start_website`
 
 ## Python Packages
 * ipykernel
