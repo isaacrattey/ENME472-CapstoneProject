@@ -1,14 +1,115 @@
 <!doctype html>
 <html>
 <head>
+    <!--link rel="stylesheet" href="{{ url_for('static', filename= 'templates/style.css') }}"-->
     <title>Our Funky HTML Page</title>
     <meta name="description" content="Our first page">
     <meta name="keywords" content="html tutorial template">
+
+    <style>
+        body {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background-color: whitesmoke;
+            }
+
+        h1 {
+            border: 1px rgb(190, 170, 238) solid;
+            border-style: inset;
+            border-radius: 3%;
+            box-shadow: inset 8em 2em gold;
+
+            color: rgb(15, 59, 57);
+
+            height: 50px;
+            width: 200px;
+
+            margin: auto;
+            text-align: center;
+            padding: 10px;}
+
+        p {
+            color: green;
+        }
+
+        .tab {
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            overflow: hidden;
+        }
+
+        .tab button{
+            background-color: inherit;
+            border: none;
+            cursor: pointer;
+            float: left;
+            padding: 10px 10px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 18px;
+        }
+        
+        .tabcontent {
+            display: none;
+            padding: 5px 5px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        button {
+            background-color: peru;
+            border: none;
+            border-radius: 5%;
+            cursor: pointer;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 18px;
+        }
+
+        button:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+    </style>
 </head>
 
-<h1>Title</h1>
-<a href=button_test><button>Button Text</button></a>
+
 <body>
-    Content goes here.
+    <h1>Title</h1>  
+    <br>
+<div class='tab'>
+    <button class="tablinks" onclick="clickHandle(event, 'tab1')" id="defaultMode">tab1</button>
+    <button class="tablinks" onclick="clickHandle(event, 'tab2')">tab2</button>
+</div>
+
+<div id='tab1' class="tabcontent">
+    <p>tab1 content goes here</p>
+</div>
+
+<div id='tab2' class="tabcontent">
+    <p>tab2 content goes here</p>
+</div>
+
+<br>
+
+<a href=button_test><button>Button Text</button></a>
+    <p>Content goes here.</p>
+
 </body>
+
+<script>
+    function clickHandle(event, mode) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(mode).style.display = "block";
+        event.currentTarget.className += " active";
+}
+
+    document.getElementById("defaultMode").click();
+    document.getElementById("defaultStep").click();
+</script>
+
 </html>

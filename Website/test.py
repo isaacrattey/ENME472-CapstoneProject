@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, request
 
+#init flask application
 app = Flask(__name__)
 
 
