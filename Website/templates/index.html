@@ -35,9 +35,12 @@
             border: 1px solid #ccc;
             background-color: #f1f1f1;
             overflow: hidden;
+            width: 610px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .tab button{
+        .tab button {
             background-color: inherit;
             border: none;
             cursor: pointer;
@@ -46,8 +49,15 @@
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             font-size: 18px;
         }
+
+        .tab button:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
         
         .tabcontent {
+            width: 600px;
+            margin-left: auto;
+            margin-right: auto;
             display: none;
             padding: 5px 5px;
             border: 1px solid #ccc;
@@ -63,27 +73,65 @@
             font-size: 18px;
         }
 
-        button:hover {
-            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        .box {
+           width: 500px;
+           height: 400px;
+           margin-left: auto;
+           margin-right: auto;
+           margin-top: 10px;
+           margin-bottom: 10px;
+           padding: 25px;
+           border: 5px solid green 
         }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        
+
     </style>
 </head>
 
 
 <body>
-    <h1>Title</h1>  
+    <h1>Vanilla 1.18</h1>  
     <br>
 <div class='tab'>
-    <button class="tablinks" onclick="clickHandle(event, 'tab1')" id="defaultMode">tab1</button>
-    <button class="tablinks" onclick="clickHandle(event, 'tab2')">tab2</button>
+    <button class="tablinks" onclick="clickHandle(event, 'status')" id="defaultMode">Status</button>
+    <button class="tablinks" onclick="clickHandle(event, 'settings')">Settings</button>
+    <button class="tablinks" onclick="clickHandle(event, 'data')">Data</button>
 </div>
 
-<div id='tab1' class="tabcontent">
-    <p>tab1 content goes here</p>
+<div id='status' class="tabcontent">
+    <div class="box">
+        <p>Plant: Foo Plant</p>
+        <img src="tempData.png" alt="" width = "450" height="250" class="center">
+        <p>Last Measurement Time Stamp: </p>
+        <p>Last Measured pH:    </p>
+        <p>Last Measured Moisture: </p>
+    </div>
+
+    <div class="box">
+        <p>Plant: Foos Plant</p>
+        <img src="tempData.png" alt="" width = "450" height="250" class="center">
+        <p>Last Measurement Time Stamp: </p>
+        <p>Last Measured pH:    </p>
+        <p>Last Measured Moisture: </p>
+    </div>
 </div>
 
-<div id='tab2' class="tabcontent">
+<div id='settings' class="tabcontent">
     <p>tab2 content goes here</p>
+</div>
+
+<div id='data' class="tabcontent">
+    <button type="button"
+    onclick="document.getElementById('demo').innerHTML = Date()">
+    Display Date and Time.</button>
+
+    <p id="demo"></p>
 </div>
 
 <br>
