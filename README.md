@@ -10,6 +10,9 @@ From a bash shell, navigate into the **./Website** directory and run this:
 
 `./start_website`
 
+Or this to run locally:
+`./start_website_local`
+
 ## Python Packages
 * ipykernel
 * flask
