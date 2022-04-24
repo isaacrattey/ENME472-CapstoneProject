@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, request
-from datetime import datetime
+import datetime
 
 #init flask application
 app = Flask(__name__)
