@@ -43,7 +43,9 @@ def collectDataButton(trayNum):
         moisture1 = 10
         time1 = datetime.datetime.now()
 
-    return render_template('index.html', time1=time1, time2=time2, pH1=pH1, pH2=pH2, moisture1=moisture1, moisture2=moisture2)
+    render_template('index.html', time1=time1, time2=time2, pH1=pH1, pH2=pH2, moisture1=moisture1, moisture2=moisture2)
+
+    return redirect(request.referrer)
 
 #background process happening without any refreshing
 @app.route('/button_test')
