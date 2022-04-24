@@ -1,5 +1,4 @@
 <!doctype html>
-<html>
 <head>
     <!--link rel="stylesheet" href="{{ url_for('static', filename= 'templates/style.css') }}"-->
     <title>Our Funky HTML Page</title>
@@ -75,7 +74,7 @@
 
         .box {
            width: 500px;
-           height: 400px;
+           height: 450px;
            margin-left: auto;
            margin-right: auto;
            margin-top: 10px;
@@ -108,17 +107,21 @@
     <div class="box">
         <p>Plant: Foo Plant</p>
         <img src="tempData.png" alt="" width = "450" height="250" class="center">
-        <p>Last Measurement Time Stamp: </p>
-        <p>Last Measured pH:    </p>
-        <p>Last Measured Moisture: </p>
+        <p>Last Measurement Time Stamp: {{time1}}</p>
+        <p>Last Measured pH: {{pH1}} </p>
+        <p>Last Measured Moisture: {{moisture1}}</p>
+        <a href=collectDataButton/1><button>Collect Data</button></a>
+        <a href=waterButton/1><button>Water Plant</button></a>
     </div>
 
     <div class="box">
         <p>Plant: Foos Plant</p>
         <img src="tempData.png" alt="" width = "450" height="250" class="center">
-        <p>Last Measurement Time Stamp: </p>
-        <p>Last Measured pH:    </p>
-        <p>Last Measured Moisture: </p>
+        <p>Last Measurement Time Stamp: {{time2}}</p>
+        <p>Last Measured pH: {{pH2}}</p>
+        <p>Last Measured Moisture: {{moisture2}}</p>
+        <a href=collectDataButton/2><button>Collect Data</button></a>
+        <a href=waterButton/2><button>Water Plant</button></a>
     </div>
 </div>
 
@@ -135,9 +138,6 @@
 </div>
 
 <br>
-
-<a href=button_test><button>Button Text</button></a>
-    <p>Content goes here.</p>
 
 </body>
 
