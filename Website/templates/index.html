@@ -126,15 +126,26 @@
 </div>
 
 <div id='settings' class="tabcontent">
-    <p>tab2 content goes here</p>
+    <!-- <form method="POST" href="settings">
+        <p>Sensing Frequency: <input type="number" name="frequency"> (time between soil checks in minutes)</p>
+        <input type="submit" href="settings" name="settings" value="Update Settings">
+    </form> -->
 </div>
 
-<div id='data' class="tabcontent">
-    <button type="button"
-    onclick="document.getElementById('demo').innerHTML = Date()">
-    Display Date and Time.</button>
-
-    <p id="demo"></p>
+<div id='data' class="tabcontent" name="tab3">
+    <form method="POST">
+        <h2>Export Data</h2>
+        <p>Start Date:</p>
+        <input type="date" id="start" name="data-start">
+        <p>Stop Date:</p>
+        <input type="date" id="stop" name="data-stop">
+        <p>Trays:</p>
+        <label><input type="checkbox" id="tray1" name="tray1-box">Tray 1</label><br>
+        <label><input type="checkbox" id="tray2" name="tray2-box">Tray 2</label><br><br>
+        <input type="submit" value="Download Data">
+    </form>
+    <!-- <a href=downloadButton><button>Export All Data</button></a> -->
+    <!-- <p id="demo"></p> -->
 </div>
 
 <br>
