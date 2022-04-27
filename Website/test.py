@@ -4,7 +4,6 @@ import datetime
 #init flask application
 app = Flask(__name__)
 
-
 @app.route('/')
 def index():
     time1 = str(datetime.datetime.now())
@@ -42,8 +41,6 @@ def collectDataButton(trayNum):
         pH1 = 7
         moisture1 = 10
         time1 = datetime.datetime.now()
-
-    render_template('index.html', time1=time1, time2=time2, pH1=pH1, pH2=pH2, moisture1=moisture1, moisture2=moisture2)
 
     return redirect(request.referrer)
 
