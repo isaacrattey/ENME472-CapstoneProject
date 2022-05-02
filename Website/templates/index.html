@@ -74,7 +74,7 @@
 
         .box {
            width: 500px;
-           height: 450px;
+           height: 720px;
            margin-left: auto;
            margin-right: auto;
            margin-top: 10px;
@@ -86,6 +86,10 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .iframe {
+            border: 2px solid gainsboro;
         }
 
         
@@ -106,7 +110,11 @@
 <div id='status' class="tabcontent">
     <div class="box">
         <p>Plant: Foo Plant</p>
-        <img src="tempData.png" alt="" width = "450" height="250" class="center">
+        <iframe src="https://thingspeak.com/channels/1721972/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=pH+Chart&type=line&xaxis=Time&yaxis=pH&yaxismax=14&yaxismin=0" 
+        alt="" width="450" height="250" class="center"></iframe>
+        <br>
+        <iframe src="https://thingspeak.com/channels/1721972/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Moisture+Chart&type=line&xaxis=Moisture&yaxis=Time&yaxismax=100&yaxismin=0" 
+        alt="" width="450" height="250" class="center"></iframe>
         <p>Last Measurement Time Stamp: {{time1}}</p>
         <p>Last Measured pH: {{pH1}} </p>
         <p>Last Measured Moisture: {{moisture1}}</p>
@@ -116,7 +124,11 @@
 
     <div class="box">
         <p>Plant: Foos Plant</p>
-        <img src="tempData.png" alt="" width = "450" height="250" class="center">
+        <iframe src="https://thingspeak.com/channels/1721972/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=pH+Chart&type=line&xaxis=pH&yaxis=Time&yaxismax=14&yaxismin=0"
+        alt="" width="450" height="250" class="center"></iframe>
+        <br>
+        <iframe src="https://thingspeak.com/channels/1721972/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Moisture+Chart&type=line&xaxis=Moisture&yaxis=Time&yaxismax=100&yaxismin=0" 
+        alt="" width="450" height="250" class="center"></iframe>
         <p>Last Measurement Time Stamp: {{time2}}</p>
         <p>Last Measured pH: {{pH2}}</p>
         <p>Last Measured Moisture: {{moisture2}}</p>
