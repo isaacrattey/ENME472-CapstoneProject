@@ -11,12 +11,16 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    time1 = str(datetime.datetime.now())
-    time2 = str(datetime.datetime.now())
-    pH1 = -1
-    pH2 = -2
-    moisture1 = 0
-    moisture2 = 0
+    df = pd.read_pickle("./plantData.pkl")
+	#get last data for tray1
+    pH1 = df.loc[df.Tray == 1].iloc[-1].pH
+    moisture1 = df.loc[df.Tray == 1].iloc[-1].Moisture
+    time1 = df.loc[df.Tray == 1].iloc[-1].Time
+
+	#get last data for tray2
+    pH2 = df.loc[df.Tray == 2].iloc[-1].pH
+    moisture2 = df.loc[df.Tray == 2].iloc[-1].Moisture
+    time2 = df.loc[df.Tray == 2].iloc[-1].Time
     return render_template('index.html', time1=time1, time2=time2, pH1=pH1, pH2=pH2, moisture1=moisture1, moisture2=moisture2)
 
 if __name__ == '__main__':
@@ -90,7 +94,7 @@ def collectDataButton(trayNum):
     df.to_pickle("./plantData.pkl")
 
 	# Display data
-    render_template('index.html', time1=time1, time2=time2, pH1=pH1, pH2=pH2, moisture1=moisture1, moisture2=moisture2)
+    # render_template('index.html', time1=time1, time2=time2, pH1=pH1, pH2=pH2, moisture1=moisture1, moisture2=moisture2)
 
     return redirect(request.referrer)
 

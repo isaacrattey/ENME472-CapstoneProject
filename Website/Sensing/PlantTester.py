@@ -26,7 +26,7 @@ def measure():
         # temp = tempSensor.getReading()
         temp = -1.0
         moisture += moistureSensor.getReading()
-        time.sleep(3)
+        time.sleep(.5)
     ph /= 5.0
     moisture /= 5.0
     print(ph, temp, moisture)
