@@ -30,7 +30,7 @@ if __name__ == '__main__':
 def collectDataButton(trayNum):
     df = pd.read_pickle("./plantData.pkl")
     print(trayNum)
-    if trayNum == 1:
+    if str(trayNum) == 1:
         
         #move to tray1
 
