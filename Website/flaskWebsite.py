@@ -29,6 +29,7 @@ if __name__ == '__main__':
 @app.route('/collectDataButton/<trayNum>')
 def collectDataButton(trayNum):
     df = pd.read_pickle("./plantData.pkl")
+    print(trayNum)
     if trayNum == 1:
         
         #move to tray1
@@ -64,7 +65,7 @@ def collectDataButton(trayNum):
         #update data for tray2
         data={
             'Time':datetime.datetime.now(),
-            'Tray':1,
+            'Tray':2,
             'Moisture':moisture2,
             'pH':pH2,
             'Temperature':temp
@@ -77,7 +78,9 @@ def collectDataButton(trayNum):
         # params = {3:pH2, 4:moisture2, "api_key":api}
         # params = urlencode(params)
         # url = "https://api.thingspeak.com/update?" + params
-        url = "https://api.thingspeak.com/update?api_key=" + api + "&field3=" + str(pH2) + "&field4=" + str(moisture2)
+        url = "https://api.thingspeak.com/update?api_key=" + api + "&field3=" + str(pH2)
+        response = urlopen(url)
+        url = "https://api.thingspeak.com/update?api_key=" + api + "&field4=" + str(moisture2)
         response = urlopen(url)
         print(response.status, response.reason)
 
