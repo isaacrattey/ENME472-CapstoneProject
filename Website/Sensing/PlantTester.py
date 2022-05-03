@@ -1,4 +1,4 @@
-from Sensor import Sensor
+from Sensing.Sensor import Sensor
 from datetime import datetime
 
 phChn = 0

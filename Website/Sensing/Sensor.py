@@ -1,4 +1,4 @@
-from PCF8591 import PCF8591
+from Sensing.PCF8591 import PCF8591
 
 class Sensor:
 
