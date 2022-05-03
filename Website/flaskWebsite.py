@@ -40,7 +40,7 @@ def collectDataButton(trayNum):
             'Temperature':temp
         }
         df = df.append(dict, ignore_index=True)
-        df.to_pickle("./plantData.pkl")
+        print(dict)
 
         #output data to thingspeak
         api = "MAM1MDSXCO7T18KT"
@@ -71,6 +71,8 @@ def collectDataButton(trayNum):
         params = urlencode(params)
         url = "https://api.thingspeak.com/update?" + params
         response = urlopen(url)
+        print(response.status, response.reason)
+
 
     
 	# Read data from pickle
