@@ -3,6 +3,7 @@ import datetime
 from urllib.request import urlopen
 from urllib.parse import urlencode
 from urllib import response
+import Sensing.PlantTester as PlantTester
 
 #init flask application
 app = Flask(__name__)
@@ -28,7 +29,7 @@ def collectDataButton(trayNum):
         #move to tray1
 
         #collect data for tray1
-
+        ph, temp, moisture = PlantTester.measure()
         #update data for tray1
         
         #get last data for tray1
