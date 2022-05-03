@@ -48,7 +48,7 @@ def collectDataButton(trayNum):
         params = urlencode(params)
         url = "https://api.thingspeak.com/update?" + params
         response = urlopen(url)
-        #print(response.status, response.reason)
+        print(response.status, response.reason)
     else:
         #move to tray2
 
