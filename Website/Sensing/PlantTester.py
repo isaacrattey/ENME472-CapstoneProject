@@ -30,6 +30,6 @@ def measure():
     ph /= 5.0
     ph = round(ph * 14.0/255.0, 2)
     moisture /= 5.0
-    moisture = round(moisture * 100.0/255.0, 2)
+    moisture = round((255.0 - moisture) * 100.0/255.0, 2)
     print(ph, temp, moisture)
     return ph, temp, moisture

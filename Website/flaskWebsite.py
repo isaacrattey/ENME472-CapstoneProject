@@ -5,6 +5,15 @@ from urllib.parse import urlencode
 from urllib import response
 import Sensing.PlantTester as PlantTester
 import pandas as pd
+import RPi.GPIO as gpio
+import time
+
+gpio.setmode(gpio.BCM)
+# Set up solenoid pins
+solenoid1Pin = 17
+solenoid2Pin = 27
+gpio.setup(solenoid1Pin, gpio.out)
+gpio.setup(solenoid2Pin, gpio.out)
 
 #init flask application
 app = Flask(__name__)
@@ -29,7 +38,7 @@ if __name__ == '__main__':
 @app.route('/collectDataButton/<trayNum>')
 def collectDataButton(trayNum):
     df = pd.read_pickle("./plantData.pkl")
-    print(trayNum)
+    # print(trayNum)
     if str(trayNum) == "1":
         
         #move to tray1
@@ -106,6 +115,20 @@ def collectDataButton(trayNum):
     # render_template('index.html', time1=time1, time2=time2, pH1=pH1, pH2=pH2, moisture1=moisture1, moisture2=moisture2)
 
     return redirect(request.referrer)
+
+@app.route('/waterButton/<trayNum>')
+def waterButton(trayNum):
+    if str(trayNum) == "1":
+        gpio.output(solenoid1Pin, 1)
+        time.sleep(2)
+        gpio.output(solenoid1Pin, 0)
+    else:
+        gpio.output(solenoid2Pin, 1)
+        time.sleep(2)
+        gpio.output(solenoid2Pin, 0)
+        
+    return redirect(request.referrer)
+
 
 #background process happening without any refreshing
 # @app.route('/button_test')
