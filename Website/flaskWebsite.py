@@ -32,15 +32,15 @@ def collectDataButton(trayNum):
         #collect data for tray1
         pH1, temp, moisture1 = PlantTester.measure()
         #update data for tray1
-        dict={
+        data={
             'Time':datetime.datetime.now(),
             'Tray':1,
             'Moisture':moisture1,
             'pH':pH1,
             'Temperature':temp
         }
-        df = df.append(dict, ignore_index=True)
-        print(dict)
+        df = df.append(data, ignore_index=True)
+        print(data)
 
         #output data to thingspeak
         api = "MAM1MDSXCO7T18KT"
@@ -55,14 +55,14 @@ def collectDataButton(trayNum):
         #collect data for tray2
         pH2, temp, moisture2 = PlantTester.measure()
         #update data for tray2
-        dict={
+        data={
             'Time':datetime.datetime.now(),
             'Tray':1,
             'Moisture':moisture2,
             'pH':pH2,
             'Temperature':temp
         }
-        df = df.append(dict, ignore_index=True)
+        df = df.append(data, ignore_index=True)
         
 
         #output data to thingspeak
