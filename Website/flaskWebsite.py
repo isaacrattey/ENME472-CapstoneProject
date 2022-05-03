@@ -1,5 +1,8 @@
 from flask import Flask, render_template, redirect, request, send_file
 import datetime
+from urllib.request import urlopen
+from urllib.parse import urlencode
+from urllib import response
 
 #init flask application
 app = Flask(__name__)
@@ -21,8 +24,14 @@ if __name__ == '__main__':
 @app.route('/collectDataButton/<trayNum>')
 def collectDataButton(trayNum):
     if trayNum == 1:
+        
         #move to tray1
+
         #collect data for tray1
+
+        #update data for tray1
+        
+        #get last data for tray1
         pH1 = 7
         moisture1 = 10
         time1 = datetime.datetime.now()
@@ -31,17 +40,38 @@ def collectDataButton(trayNum):
         pH2 = 7
         moisture2 = 10
         time2 = datetime.datetime.now()
+
+        #output data to thingspeak
+        api = "MAM1MDSXCO7T18KT"
+        params = {1:pH1, 2:moisture1, "api_key":api}
+        params = urlencode(params)
+        url = "https://api.thingspeaks.com/update?" + params
+        response = urlopen(url)
+        #print(response.status, response.reason)
     else:
         #move to tray2
+
         #collect data for tray2
-        pH2 = 7
-        moisture2 = 10
-        time2 = datetime.datetime.now()
+
+        #update data for tray2
 
         #get last data for tray1
         pH1 = 7
         moisture1 = 10
         time1 = datetime.datetime.now()
+
+        #get last data for tray2
+        
+        pH2 = 7
+        moisture2 = 10
+        time2 = datetime.datetime.now()
+
+        #output data to thingspeak
+        api = "MAM1MDSXCO7T18KT"
+        params = {3:pH2, 4:moisture2, "api_key":api}
+        params = urlencode(params)
+        url = "https://api.thingspeaks.com/update?" + params
+        response = urlopen(url)
 
     render_template('index.html', time1=time1, time2=time2, pH1=pH1, pH2=pH2, moisture1=moisture1, moisture2=moisture2)
 
