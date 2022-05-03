@@ -48,9 +48,10 @@ def collectDataButton(trayNum):
 
         #output data to thingspeak
         api = "MAM1MDSXCO7T18KT"
-        params = {1:pH1, 2:moisture1, "api_key":api}
-        params = urlencode(params)
-        url = "https://api.thingspeak.com/update?" + params
+        # params = {1:pH1, 2:moisture1, "api_key":api}
+        # params = urlencode(params)
+        # url = "https://api.thingspeak.com/update?" + params
+        url = "https://api.thingspeak.com/update?api_key=" + api + "&field1=" + pH1 + "&field2=" + moisture1
         response = urlopen(url)
         print(response.status, response.reason)
     else:
@@ -71,9 +72,10 @@ def collectDataButton(trayNum):
 
         #output data to thingspeak
         api = "MAM1MDSXCO7T18KT"
-        params = {3:pH2, 4:moisture2, "api_key":api}
-        params = urlencode(params)
-        url = "https://api.thingspeak.com/update?" + params
+        # params = {3:pH2, 4:moisture2, "api_key":api}
+        # params = urlencode(params)
+        # url = "https://api.thingspeak.com/update?" + params
+        url = "https://api.thingspeak.com/update?api_key=" + api + "&field3=" + pH2 + "&field4=" + moisture2
         response = urlopen(url)
         print(response.status, response.reason)
 
