@@ -138,10 +138,24 @@
 </div>
 
 <div id='settings' class="tabcontent">
-    <!-- <form method="POST" href="settings">
-        <p>Sensing Frequency: <input type="number" name="frequency"> (time between soil checks in minutes)</p>
+    <form method="POST" href="settings">
+        <fieldset>
+            <legend>System On/Off:</legend>
+        
+            <div>
+              <input type="radio" id="on" name="onoff" value="on"
+                     checked>
+              <label for="on">On</label>
+            </div>
+        
+            <div>
+              <input type="radio" id="off" name="onoff" value="off">
+              <label for="off">Off</label>
+            </div>
+        </fieldset>
+        <p>Sensing Frequency: <input type="number" name="frequency" value=5> (time between soil checks in minutes)</p>
         <input type="submit" href="settings" name="settings" value="Update Settings">
-    </form> -->
+    </form>
 </div>
 
 <div id='data' class="tabcontent" name="tab3">
