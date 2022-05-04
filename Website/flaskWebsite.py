@@ -142,7 +142,7 @@ def downloadFile():
     # Export new data to csv
     ############################################################################TO DO
     print(request.form.get("data-start"))
-    print(request.form.get("data-stop"))
+    print((request.form.get("data-stop") == ""))
     print(request.form.get("tray1-box"))
     print(request.form.get("tray2-box"))
 
