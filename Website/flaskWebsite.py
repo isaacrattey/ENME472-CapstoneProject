@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, request, send_file
-import datetime
+from datetime import datetime
 from urllib.request import urlopen
 from urllib.parse import urlencode
 from urllib import response
@@ -47,7 +47,7 @@ def collectDataButton(trayNum):
         pH1, temp, moisture1 = PlantTester.measure()
         #update data for tray1
         data={
-            'Time':datetime.datetime.now(),
+            'Time':datetime.now(),
             'Tray':1,
             'Moisture':moisture1,
             'pH':pH1,
@@ -74,7 +74,7 @@ def collectDataButton(trayNum):
         pH2, temp, moisture2 = PlantTester.measure()
         #update data for tray2
         data={
-            'Time':datetime.datetime.now(),
+            'Time':datetime.now(),
             'Tray':2,
             'Moisture':moisture2,
             'pH':pH2,
@@ -99,14 +99,14 @@ def collectDataButton(trayNum):
     
 	# Read data from pickle
 	#get last data for tray1
-    pH1 = df.loc[df.Tray == 1].iloc[-1].pH
-    moisture1 = df.loc[df.Tray == 1].iloc[-1].Moisture
-    time1 = df.loc[df.Tray == 1].iloc[-1].Time
+    # pH1 = df.loc[df.Tray == 1].iloc[-1].pH
+    # moisture1 = df.loc[df.Tray == 1].iloc[-1].Moisture
+    # time1 = df.loc[df.Tray == 1].iloc[-1].Time
 
-	#get last data for tray2
-    pH2 = df.loc[df.Tray == 2].iloc[-1].pH
-    moisture2 = df.loc[df.Tray == 2].iloc[-1].Moisture
-    time2 = df.loc[df.Tray == 2].iloc[-1].Time
+	# #get last data for tray2
+    # pH2 = df.loc[df.Tray == 2].iloc[-1].pH
+    # moisture2 = df.loc[df.Tray == 2].iloc[-1].Moisture
+    # time2 = df.loc[df.Tray == 2].iloc[-1].Time
 	
     # Save Data
     df.to_pickle("./plantData.pkl")
@@ -140,15 +140,27 @@ def waterButton(trayNum):
 @app.route('/', methods=['POST'])
 def downloadFile():
     # Export new data to csv
-    ############################################################################TO DO
-    print(request.form.get("data-start"))
-    print((request.form.get("data-stop") == ""))
-    print(request.form.get("tray1-box"))
-    print(request.form.get("tray2-box"))
+    df = pd.read_pickle("./plantData.pkl")
+    if request.form.get("tray1-box") == "on" and request.form.get("tray2-box") == None:
+        df = df.loc[df.Tray == 1]
+    elif request.form.get("tray1-box") == None and request.form.get("tray2-box") == "on":
+        df = df.loc[df.Tray == 2]
+    if (request.form.get("data-start") != ""):
+        date_object = datetime.strptime(request.form.get("data-start"), "%Y-%m-%d")
+        df = df.loc[df.Time > date_object]
+    if (request.form.get("data-stop") != ""):
+        date_object = datetime.strptime(request.form.get("data-stop"), "%Y-%m-%d")
+        df = df.loc[df.Time < date_object]
+
+    # print(request.form.get("data-start"))
+    # print((request.form.get("data-stop") == ""))
+    # print(request.form.get("tray1-box"))
+    # print(request.form.get("tray2-box"))
 
     # print(request.form.get("textField"))
 
     # Return data
     path = "./plantDataExport.csv"
+    df.to_csv(path)
     return send_file(path, as_attachment=True)
 
