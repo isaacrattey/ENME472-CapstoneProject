@@ -28,7 +28,7 @@ def measure():
         moisture += moistureSensor.getReading()
         time.sleep(.5)
     ph /= 5.0
-    ph = round(ph * 14.0/255.0, 2)
+    ph = round((255.0 - ph) * 14.0/255.0, 2)
     moisture /= 5.0
     moisture = round((255.0 - moisture) * 100.0/255.0, 2)
     print(ph, temp, moisture)
