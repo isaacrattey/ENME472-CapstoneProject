@@ -12,8 +12,8 @@ gpio.setmode(gpio.BCM)
 # Set up solenoid pins
 solenoid1Pin = 17
 solenoid2Pin = 27
-gpio.setup(solenoid1Pin, gpio.out)
-gpio.setup(solenoid2Pin, gpio.out)
+gpio.setup(solenoid1Pin, gpio.OUT)
+gpio.setup(solenoid2Pin, gpio.OUT)
 
 #init flask application
 app = Flask(__name__)
