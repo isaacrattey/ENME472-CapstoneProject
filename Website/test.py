@@ -147,3 +147,18 @@ def collectDataButton(trayNum):
     # render_template('index.html', time1=time1, time2=time2, pH1=pH1, pH2=pH2, moisture1=moisture1, moisture2=moisture2)
 
     return redirect(request.referrer)
+
+@app.route('/waterButton/<trayNum>')
+def waterButton(trayNum):
+    if str(trayNum) == "1":
+        gpio.output(solenoid2Pin, 0)
+        gpio.output(solenoid1Pin, 1)
+        time.sleep(30)
+        gpio.output(solenoid1Pin, 0)
+    else:
+        gpio.output(solenoid1Pin, 0)
+        gpio.output(solenoid2Pin, 1)
+        time.sleep(30)
+        gpio.output(solenoid2Pin, 0)
+        
+    return redirect(request.referrer)
