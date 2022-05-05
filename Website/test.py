@@ -65,7 +65,11 @@ def collectDataButton(trayNum):
         # # move y down into tray
         # xy.move(0, 130)
         # #collect data for tray1
-        pH1, temp, moisture1 = PlantTester.measure()
+        # pH1, temp, moisture1 = PlantTester.measure()
+        
+        pH1 = 7.2
+        moisture1 = 14.3
+        temp = -1   
         #update data for tray1
         data={
             'Time':datetime.now(),
@@ -101,7 +105,10 @@ def collectDataButton(trayNum):
         # xy.move(300, 440)
         import moving.move3
         #collect data for tray2
-        pH2, temp, moisture2 = PlantTester.measure()
+        # pH2, temp, moisture2 = PlantTester.measure()
+        pH2 = 7.3
+        temp = -1
+        moisture1 = 34  
         #update data for tray2
         data={
             'Time':datetime.now(),

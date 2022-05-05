@@ -7,8 +7,8 @@ import Sensing.PlantTester as PlantTester
 import pandas as pd
 import RPi.GPIO as gpio
 import time
-import moving.xyaxis as xyaxis
-import moving.zaxis as zaxis
+# import moving.xyaxis as xyaxis
+# import moving.zaxis as zaxis
 
 gpio.setmode(gpio.BCM)
 # Set up solenoid pins
