@@ -48,7 +48,7 @@ def index():
     return render_template('index.html', time1=time1, time2=time2, pH1=pH1, pH2=pH2, moisture1=moisture1, moisture2=moisture2)
 
 if __name__ == '__main__':
-      app.run(host='0.0.0.0', debug=False, port=5000)
+      app.run(host='10.104.9.132', debug=False, port=5000)
 
 @app.route('/collectDataButton/<trayNum>')
 def collectDataButton(trayNum):
