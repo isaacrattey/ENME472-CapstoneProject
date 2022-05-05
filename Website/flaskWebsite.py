@@ -48,7 +48,7 @@ def index():
     return render_template('index.html', time1=time1, time2=time2, pH1=pH1, pH2=pH2, moisture1=moisture1, moisture2=moisture2)
 
 if __name__ == '__main__':
-      app.run(host='0.0.0.0', debug=True, port=5000)
+      app.run(host='0.0.0.0', debug=False, port=5000)
 
 @app.route('/collectDataButton/<trayNum>')
 def collectDataButton(trayNum):
@@ -86,7 +86,7 @@ def collectDataButton(trayNum):
         # response = urlopen(url)
         # url = "https://api.thingspeak.com/update?api_key=" + api + "&field2=" + str(moisture1)
         response = urlopen(url)
-        print(response.status, response.reason)
+        # print(response.status, response.reason)
 
         # Return to neutral position
         xy.move(0,0)
@@ -120,7 +120,7 @@ def collectDataButton(trayNum):
         # response = urlopen(url)
         # url = "https://api.thingspeak.com/update?api_key=" + api + "&field4=" + str(moisture2)
         response = urlopen(url)
-        print(response.status, response.reason)
+        # print(response.status, response.reason)
 
         # Return to neutral position
         xy.move(300, 380)
