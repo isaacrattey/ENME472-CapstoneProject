@@ -56,7 +56,7 @@ def collectDataButton(trayNum):
     # print(trayNum)
     if str(trayNum) == "1":
         
-        import moving.moveall
+        import moving.move1
         #move to tray1
         # move to tray position
         # already done
@@ -90,6 +90,7 @@ def collectDataButton(trayNum):
         # print(response.status, response.reason)
 
         # # Return to neutral position
+        import moving.move2
         # xy.move(0,0)
         # z.move(0)
 
@@ -98,6 +99,7 @@ def collectDataButton(trayNum):
         # xy.move(300, 380)
         # z.move(150)
         # xy.move(300, 440)
+        import moving.move3
         #collect data for tray2
         pH2, temp, moisture2 = PlantTester.measure()
         #update data for tray2
@@ -124,6 +126,7 @@ def collectDataButton(trayNum):
         # print(response.status, response.reason)
 
         # Return to neutral position
+        import moving.move4
         # xy.move(300, 380)
         # z.move(0)
         # xy.move(0,0)
