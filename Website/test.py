@@ -162,3 +162,30 @@ def waterButton(trayNum):
         gpio.output(solenoid2Pin, 0)
         
     return redirect(request.referrer)
+
+@app.route('/', methods=['POST'])
+def downloadFile():
+    # Export new data to csv
+    df = pd.read_pickle("./plantData.pkl")
+    if request.form.get("tray1-box") == "on" and request.form.get("tray2-box") == None:
+        df = df.loc[df.Tray == 1]
+    elif request.form.get("tray1-box") == None and request.form.get("tray2-box") == "on":
+        df = df.loc[df.Tray == 2]
+    if (request.form.get("data-start") != ""):
+        date_object = datetime.strptime(request.form.get("data-start"), "%Y-%m-%d")
+        df = df.loc[df.Time > date_object]
+    if (request.form.get("data-stop") != ""):
+        date_object = datetime.strptime(request.form.get("data-stop"), "%Y-%m-%d")
+        df = df.loc[df.Time < date_object]
+
+    # print(request.form.get("data-start"))
+    # print((request.form.get("data-stop") == ""))
+    # print(request.form.get("tray1-box"))
+    # print(request.form.get("tray2-box"))
+
+    # print(request.form.get("textField"))
+
+    # Return data
+    path = "./plantDataExport.csv"
+    df.to_csv(path)
+    return send_file(path, as_attachment=True)
