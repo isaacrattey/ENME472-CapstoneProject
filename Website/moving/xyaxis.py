@@ -39,15 +39,15 @@ class xyaxis():
     self.drv.axis0.controller.input_pos = setpointy
     while abs(self.drv.axis1.encoder.pos_estimate - setpointx) >0.05 or abs(self.drv.axis0.encoder.pos_estimate - setpointy) >0.05:
         print(self.drv.axis0.encoder.error)
-        if self.drv.axis0.encoder.error != 0 or self.drv.axis0.encoder.error != 0 or self.drv.error != 0:
-            print(str(dump_errors(self.drv)))
+        if self.drv.axis1.encoder.error != 0 or self.drv.axis0.encoder.error != 0 or self.drv.error != 0:
+            #print(str(dump_errors(self.drv)))
             self.drv.clear_errors()
             self.drv.axis0.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL
             self.drv.axis1.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL
             self.drv.axis1.controller.input_pos = setpointx
             self.drv.axis0.controller.input_pos = setpointy
         time.sleep(0.05)
-        print(self.drv.axis1.encoder.pos_estimate - setpointx)
+        #print(self.drv.axis1.encoder.pos_estimate - setpointx)
 
   def current_pos(self):
       return self.curr_pos
