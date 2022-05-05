@@ -7,8 +7,8 @@ import Sensing.PlantTester as PlantTester
 import pandas as pd
 import RPi.GPIO as gpio
 import time
-import moving.xyaxis as xyaxis
-import moving.zaxis as zaxis
+# import moving.xyaxis as xyaxis
+# import moving.zaxis as zaxis
 
 gpio.setmode(gpio.BCM)
 # Set up solenoid pins
@@ -16,8 +16,8 @@ solenoid1Pin = 5
 solenoid2Pin = 6
 gpio.setup(solenoid1Pin, gpio.OUT)
 gpio.setup(solenoid2Pin, gpio.OUT)
-z = zaxis.zaxis(step = 19, dir = 13)
-xy = xyaxis.xyaxis()
+# z = zaxis.zaxis(step = 19, dir = 13)
+# xy = xyaxis.xyaxis()
 
 #init flask application
 app = Flask(__name__)
@@ -56,14 +56,15 @@ def collectDataButton(trayNum):
     # print(trayNum)
     if str(trayNum) == "1":
         
+        import moving.moveall
         #move to tray1
         # move to tray position
         # already done
-        # move z into position
-        z.move(150)
-        # move y down into tray
-        xy.move(0, 130)
-        #collect data for tray1
+        # # move z into position
+        # z.move(150)
+        # # move y down into tray
+        # xy.move(0, 130)
+        # #collect data for tray1
         pH1, temp, moisture1 = PlantTester.measure()
         #update data for tray1
         data={
@@ -88,15 +89,15 @@ def collectDataButton(trayNum):
         response = urlopen(url)
         # print(response.status, response.reason)
 
-        # Return to neutral position
-        xy.move(0,0)
-        z.move(0)
+        # # Return to neutral position
+        # xy.move(0,0)
+        # z.move(0)
 
     else:
         #move to tray2
-        xy.move(300, 380)
-        z.move(150)
-        xy.move(300, 440)
+        # xy.move(300, 380)
+        # z.move(150)
+        # xy.move(300, 440)
         #collect data for tray2
         pH2, temp, moisture2 = PlantTester.measure()
         #update data for tray2
@@ -123,9 +124,9 @@ def collectDataButton(trayNum):
         # print(response.status, response.reason)
 
         # Return to neutral position
-        xy.move(300, 380)
-        z.move(0)
-        xy.move(0,0)
+        # xy.move(300, 380)
+        # z.move(0)
+        # xy.move(0,0)
 
 
     
