@@ -49,6 +49,5 @@ class xyaxis():
         time.sleep(0.05)
         print(self.drv.axis1.encoder.pos_estimate - setpointx)
 
-
-   def current_pos(self):
+  def current_pos(self):
       return self.curr_pos
