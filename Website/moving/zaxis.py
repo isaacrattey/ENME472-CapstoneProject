@@ -15,7 +15,7 @@ class zaxis():
   def home(self, val = 0):
     self.cur_dist = val
 
-  def move(self, dist, speed = 5): #speed in mm/sec
+  def move(self, dist, speed = 10): #speed in mm/sec
 
     #calculate steps from angle in radians
     steps = 200*abs(dist - self.cur_dist)/(np.pi*16)
@@ -23,16 +23,16 @@ class zaxis():
 
     #if the angle is positive, go one way, negitive go the other
     if dist - self.cur_dist < 0:
-      GPIO.output(self.dir,0)
-    else:
       GPIO.output(self.dir,1)
+    else:
+      GPIO.output(self.dir,0)
 
 
     #on and off on the step input for every step
     for i in range(int(steps)):
       GPIO.output(self.step,1)
-      time.sleep((16*np.pi)/(speed*200))
+      time.sleep((16*np.pi)/(speed*400))
       GPIO.output(self.step,0)
-      time.sleep((16*np.pi)/(speed*200))
+      time.sleep((16*np.pi)/(speed*400))
     #reset current angle. steps is only is given by the desired angle minus the current angle
     self.cur_dist = dist

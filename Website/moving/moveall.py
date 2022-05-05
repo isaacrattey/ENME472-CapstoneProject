@@ -5,12 +5,27 @@ import time
 z = zaxis.zaxis(step = 19, dir = 13)
 xy = xyaxis.xyaxis()
 
-#z.move(100)
-#xy.move(90,0)
-xy.move(90,90)
+z.move(150)
+xy.move(0,50)
+z.move(0)
+
 time.sleep(3)
 
-#z.move(0)
-#xy.move(90,0)
+z.move(0)
+xy.move(300,380)
+z.move(150)
+time.sleep(3)
+
+
+
+xy.move(300,440)
+time.sleep(3)
+
+
+
+xy.move(300,380)
+z.move(0)
 xy.move(0,0)
 time.sleep(3)
+
+

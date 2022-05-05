@@ -7,8 +7,8 @@ import Sensing.PlantTester as PlantTester
 import pandas as pd
 import RPi.GPIO as gpio
 import time
-import moving.xyaxis as xyaxis
-import moving.zaxis as zaxis
+#import moving.xyaxis as xyaxis
+#import moving.zaxis as zaxis
 
 gpio.setmode(gpio.BCM)
 # Set up solenoid pins
@@ -136,12 +136,12 @@ def waterButton(trayNum):
     if str(trayNum) == "1":
         gpio.output(solenoid2Pin, 0)
         gpio.output(solenoid1Pin, 1)
-        time.sleep(5)
+        time.sleep(30)
         gpio.output(solenoid1Pin, 0)
     else:
         gpio.output(solenoid1Pin, 0)
         gpio.output(solenoid2Pin, 1)
-        time.sleep(5)
+        time.sleep(30)
         gpio.output(solenoid2Pin, 0)
         
     return redirect(request.referrer)
