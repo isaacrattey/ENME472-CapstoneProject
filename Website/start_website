@@ -1,4 +1,4 @@
 #!/bin/bash
 export FLASK_APP=flaskWebsite
 export FLASK_ENV=development
-flask run --host=192.168.0.141
+flask run --host=10.104.9.132
