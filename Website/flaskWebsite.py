@@ -7,11 +7,13 @@ import Sensing.PlantTester as PlantTester
 import pandas as pd
 import RPi.GPIO as gpio
 import time
+import moving.xyaxis as xyaxis
+import moving.zaxis as zaxis
 
 gpio.setmode(gpio.BCM)
 # Set up solenoid pins
-solenoid1Pin = 17
-solenoid2Pin = 27
+solenoid1Pin = 5
+solenoid2Pin = 6
 gpio.setup(solenoid1Pin, gpio.OUT)
 gpio.setup(solenoid2Pin, gpio.OUT)
 
@@ -20,6 +22,14 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    # move to neutral position
+    # move y up out of soil
+
+    # move z towards gantry
+
+    # move xy to neutral position
+
+
     df = pd.read_pickle("./plantData.pkl")
 	#get last data for tray1
     pH1 = df.loc[df.Tray == 1].iloc[-1].pH
@@ -42,6 +52,11 @@ def collectDataButton(trayNum):
     if str(trayNum) == "1":
         
         #move to tray1
+        # move to tray position
+
+        # move z into position
+
+        # move y down into tray
 
         #collect data for tray1
         pH1, temp, moisture1 = PlantTester.measure()
@@ -119,12 +134,14 @@ def collectDataButton(trayNum):
 @app.route('/waterButton/<trayNum>')
 def waterButton(trayNum):
     if str(trayNum) == "1":
+        gpio.output(solenoid2Pin, 0)
         gpio.output(solenoid1Pin, 1)
-        time.sleep(2)
+        time.sleep(5)
         gpio.output(solenoid1Pin, 0)
     else:
+        gpio.output(solenoid1Pin, 0)
         gpio.output(solenoid2Pin, 1)
-        time.sleep(2)
+        time.sleep(5)
         gpio.output(solenoid2Pin, 0)
         
     return redirect(request.referrer)
